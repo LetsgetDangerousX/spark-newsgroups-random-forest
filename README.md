@@ -1,6 +1,6 @@
 # Document Classification with Random Forest on Apache Spark
 
-CS435 Programming Assignment 2. A PySpark pipeline that sorts posts from the 20 Newsgroups dataset into one of 20 categories. It turns raw text into TF-IDF vectors, trains a Random Forest classifier, tunes its hyperparameters on a validation split, and evaluates the final model on the official test set. Everything runs on Spark's DataFrame-based MLlib API.
+A PySpark pipeline that sorts posts from the 20 Newsgroups dataset into one of 20 categories. It turns raw text into TF-IDF vectors, trains a Random Forest classifier, tunes its hyperparameters on a validation split, and evaluates the final model on the official test set. Everything runs on Spark's DataFrame-based MLlib API.
 
 ## Dataset
 
