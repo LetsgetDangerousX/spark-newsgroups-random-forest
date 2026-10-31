@@ -45,18 +45,10 @@ text -> RegexTokenizer -> StopWordsRemover -> HashingTF -> IDF -> RandomForestCl
 # put the dataset on HDFS (cluster) or point DATA at a local path
 hdfs dfs -put 20news-bydate-train 20news-bydate-test /PA2/
 
-spark-submit --master spark://phoenix.cs.colostate.edu:7077 PA2.py --data /user/C837364858/PA2
+spark-submit --master spark://phoenix.cs.colostate.edu:7077 PA2.py
 ```
 
-| Option | Default | Meaning |
-| --- | --- | --- |
-| `--data` | `/user/C837364858/PA2` | HDFS folder holding the train and test folders (`file:///full/path` in local mode) |
-| `--train-dir`, `--test-dir` | `20news-bydate-train`, `20news-bydate-test` | names of the two split folders, for a new dataset |
-| `--out` | `PA2_output` | HDFS folder for the saved document-to-split assignments |
-| `--results` | `results` | local folder for the CSV result tables used in the report |
-| `--partitions` | `8` | partitions for the document DataFrames |
-
-The category list and labels are read from the training folders, so a dataset with different categories works without code changes.
+Set `DATA` at the top of `PA2.py` to the dataset location (`file:///full/path` in local mode).
 
 ## Requirements
 
