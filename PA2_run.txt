@@ -1,0 +1,188 @@
++------------------------+-----+
+|category                |label|
++------------------------+-----+
+|alt.atheism             |0.0  |
+|comp.graphics           |1.0  |
+|comp.os.ms-windows.misc |2.0  |
+|comp.sys.ibm.pc.hardware|3.0  |
+|comp.sys.mac.hardware   |4.0  |
+|comp.windows.x          |5.0  |
+|misc.forsale            |6.0  |
+|rec.autos               |7.0  |
+|rec.motorcycles         |8.0  |
+|rec.sport.baseball      |9.0  |
+|rec.sport.hockey        |10.0 |
+|sci.crypt               |11.0 |
+|sci.electronics         |12.0 |
+|sci.med                 |13.0 |
+|sci.space               |14.0 |
+|soc.religion.christian  |15.0 |
+|talk.politics.guns      |16.0 |
+|talk.politics.mideast   |17.0 |
+|talk.politics.misc      |18.0 |
+|talk.religion.misc      |19.0 |
++------------------------+-----+
+
++--------------------+--------------------+
+|               value|                path|
++--------------------+--------------------+
+|From: hamlet@stei...|file:///s/chopin/...|
+|From: jeh@cmkrnl....|file:///s/chopin/...|
+|From: mjp@watson....|file:///s/chopin/...|
++--------------------+--------------------+
+only showing top 3 rows
++-------------------------------------------------------------------------------------------------------------------------+------------------+---------+
+|path                                                                                                                     |category          |file_name|
++-------------------------------------------------------------------------------------------------------------------------+------------------+---------+
+|file:///s/chopin/n/under/C837364858/cs435/PA2/spark-newsgroups-random-forest/20news-bydate-train/rec.sport.hockey/53468  |rec.sport.hockey  |53468    |
+|file:///s/chopin/n/under/C837364858/cs435/PA2/spark-newsgroups-random-forest/20news-bydate-train/sci.electronics/53569   |sci.electronics   |53569    |
+|file:///s/chopin/n/under/C837364858/cs435/PA2/spark-newsgroups-random-forest/20news-bydate-train/talk.politics.guns/54684|talk.politics.guns|54684    |
++-------------------------------------------------------------------------------------------------------------------------+------------------+---------+
+only showing top 3 rows
+root
+ |-- doc_id: string (nullable = false)
+ |-- text: string (nullable = true)
+ |-- label: double (nullable = true)
+ |-- category: string (nullable = false)
+ |-- source_split: string (nullable = false)
+
++--------------------+--------------------+-----+------------------+------------+
+|              doc_id|                text|label|          category|source_split|
++--------------------+--------------------+-----+------------------+------------+
+|train/rec.sport.h...|From: hamlet@stei...| 10.0|  rec.sport.hockey|       train|
+|train/sci.electro...|From: jeh@cmkrnl....| 12.0|   sci.electronics|       train|
+|train/talk.politi...|From: mjp@watson....| 16.0|talk.politics.guns|       train|
++--------------------+--------------------+-----+------------------+------------+
+only showing top 3 rows
+official train: 11314 | official test: 7532
+train | empty text: 0 | no tokens: 0 | no tokens after stop-word removal: 0
+test | empty text: 0 | no tokens: 0 | no tokens after stop-word removal: 0
+train: 9108 | validation: 2206
+train/validation overlap: 0
+classes in train: 20 | classes in validation: 20
++-----+------------------------+-----+----------+
+|label|category                |train|validation|
++-----+------------------------+-----+----------+
+|0.0  |alt.atheism             |375  |105       |
+|1.0  |comp.graphics           |473  |111       |
+|2.0  |comp.os.ms-windows.misc |474  |117       |
+|3.0  |comp.sys.ibm.pc.hardware|481  |109       |
+|4.0  |comp.sys.mac.hardware   |459  |119       |
+|5.0  |comp.windows.x          |477  |116       |
+|6.0  |misc.forsale            |464  |121       |
+|7.0  |rec.autos               |471  |123       |
+|8.0  |rec.motorcycles         |485  |113       |
+|9.0  |rec.sport.baseball      |474  |123       |
+|10.0 |rec.sport.hockey        |490  |110       |
+|11.0 |sci.crypt               |474  |121       |
+|12.0 |sci.electronics         |487  |104       |
+|13.0 |sci.med                 |483  |111       |
+|14.0 |sci.space               |475  |118       |
+|15.0 |soc.religion.christian  |484  |115       |
+|16.0 |talk.politics.guns      |438  |108       |
+|17.0 |talk.politics.mideast   |460  |104       |
+|18.0 |talk.politics.misc      |387  |78        |
+|19.0 |talk.religion.misc      |297  |80        |
++-----+------------------------+-----+----------+
+
+document: train/alt.atheism/49960
+excerpt: From: mathew <mathew@mantis.co.uk>
+Subject: Alt.Atheism FAQ: Atheist Resources
+Summary: Books, addresses, music -- anything related to atheism
+Keywords: FAQ, atheism, books, music, fiction, addresses, contacts
+Expires: Thu, 29 Apr 1993 11:57:19 GMT
+Distribution: world
+Organization: Mantis Consultant
+tokens: ['from', 'mathew', 'mathew', 'mantis', 'co', 'uk', 'subject', 'alt', 'atheism', 'faq', 'atheist', 'resources', 'summary', 'books', 'addresses', 'music', 'anything', 'related', 'to', 'atheism', 'keywords', 'faq', 'atheism', 'books', 'music', 'fiction', 'addresses', 'contacts', 'expires', 'thu', '29', 'apr', '1993', '11', '57', '19', 'gmt', 'distribution', 'world', 'organization']
+after stop-word removal: ['mathew', 'mathew', 'mantis', 'co', 'uk', 'subject', 'alt', 'atheism', 'faq', 'atheist', 'resources', 'summary', 'books', 'addresses', 'music', 'anything', 'related', 'atheism', 'keywords', 'faq', 'atheism', 'books', 'music', 'fiction', 'addresses', 'contacts', 'expires', 'thu', '29', 'apr', '1993', '11', '57', '19', 'gmt', 'distribution', 'world', 'organization', 'mantis', 'consultants']
+vector size: 4096 | nonzero entries: 725
+majority category: rec.sport.hockey | accuracy: 0.0499 | weighted F1: 0.0047
+forest accuracy: 0.4266 | weighted F1: 0.4115 | fit 3.3s
+configurations: 30
+cached rows: 9108 2206
+numTrees   1  maxDepth  5  minInstancesPerNode 1  accuracy 0.1238  weighted F1 0.0808  fit 1.4s
+numTrees   1  maxDepth  5  minInstancesPerNode 5  accuracy 0.1238  weighted F1 0.0808  fit 1.3s
+numTrees   1  maxDepth 10  minInstancesPerNode 1  accuracy 0.2049  weighted F1 0.1730  fit 2.0s
+numTrees   1  maxDepth 10  minInstancesPerNode 5  accuracy 0.1868  weighted F1 0.1719  fit 2.0s
+numTrees   1  maxDepth 25  minInstancesPerNode 1  accuracy 0.2919  weighted F1 0.3005  fit 3.8s
+numTrees   1  maxDepth 25  minInstancesPerNode 5  accuracy 0.2906  weighted F1 0.3070  fit 3.7s
+numTrees   5  maxDepth  5  minInstancesPerNode 1  accuracy 0.2226  weighted F1 0.2049  fit 1.4s
+numTrees   5  maxDepth  5  minInstancesPerNode 5  accuracy 0.2502  weighted F1 0.2324  fit 1.4s
+numTrees   5  maxDepth 10  minInstancesPerNode 1  accuracy 0.3577  weighted F1 0.3638  fit 2.2s
+numTrees   5  maxDepth 10  minInstancesPerNode 5  accuracy 0.3803  weighted F1 0.3695  fit 2.0s
+numTrees   5  maxDepth 25  minInstancesPerNode 1  accuracy 0.5009  weighted F1 0.5015  fit 4.9s
+numTrees   5  maxDepth 25  minInstancesPerNode 5  accuracy 0.5009  weighted F1 0.4965  fit 4.8s
+numTrees  20  maxDepth  5  minInstancesPerNode 1  accuracy 0.4266  weighted F1 0.4115  fit 1.4s
+numTrees  20  maxDepth  5  minInstancesPerNode 5  accuracy 0.4461  weighted F1 0.4349  fit 1.4s
+numTrees  20  maxDepth 10  minInstancesPerNode 1  accuracy 0.5295  weighted F1 0.5189  fit 2.6s
+numTrees  20  maxDepth 10  minInstancesPerNode 5  accuracy 0.5286  weighted F1 0.5154  fit 2.6s
+numTrees  20  maxDepth 25  minInstancesPerNode 1  accuracy 0.6523  weighted F1 0.6463  fit 10.2s
+numTrees  20  maxDepth 25  minInstancesPerNode 5  accuracy 0.6405  weighted F1 0.6374  fit 8.9s
+numTrees  50  maxDepth  5  minInstancesPerNode 1  accuracy 0.4900  weighted F1 0.4732  fit 1.8s
+numTrees  50  maxDepth  5  minInstancesPerNode 5  accuracy 0.5227  weighted F1 0.5070  fit 1.8s
+numTrees  50  maxDepth 10  minInstancesPerNode 1  accuracy 0.5884  weighted F1 0.5770  fit 4.5s
+numTrees  50  maxDepth 10  minInstancesPerNode 5  accuracy 0.6015  weighted F1 0.5973  fit 4.3s
+numTrees  50  maxDepth 25  minInstancesPerNode 1  accuracy 0.7126  weighted F1 0.7070  fit 20.5s
+numTrees  50  maxDepth 25  minInstancesPerNode 5  accuracy 0.6886  weighted F1 0.6841  fit 17.0s
+numTrees 100  maxDepth  5  minInstancesPerNode 1  accuracy 0.5535  weighted F1 0.5328  fit 2.5s
+numTrees 100  maxDepth  5  minInstancesPerNode 5  accuracy 0.5589  weighted F1 0.5411  fit 2.4s
+numTrees 100  maxDepth 10  minInstancesPerNode 1  accuracy 0.6197  weighted F1 0.6089  fit 6.9s
+numTrees 100  maxDepth 10  minInstancesPerNode 5  accuracy 0.6129  weighted F1 0.5993  fit 6.7s
+numTrees 100  maxDepth 25  minInstancesPerNode 1  accuracy 0.7303  weighted F1 0.7252  fit 38.8s
+numTrees 100  maxDepth 25  minInstancesPerNode 5  accuracy 0.7017  weighted F1 0.6958  fit 31.8s
+selected: numTrees 100 | maxDepth 25 | minInstancesPerNode 1 | weighted F1 0.7252
+test accuracy: 0.6348
+weighted precision: 0.6398
+weighted recall: 0.6348
+weighted F1: 0.6261
++-----+------------------------+-----------+-------------+-----------------------+------------------------+---------------------+--------------+------------+---------+---------------+------------------+----------------+---------+---------------+-------+---------+----------------------+------------------+---------------------+------------------+------------------+
+|label|category                |alt.atheism|comp.graphics|comp.os.ms-windows.misc|comp.sys.ibm.pc.hardware|comp.sys.mac.hardware|comp.windows.x|misc.forsale|rec.autos|rec.motorcycles|rec.sport.baseball|rec.sport.hockey|sci.crypt|sci.electronics|sci.med|sci.space|soc.religion.christian|talk.politics.guns|talk.politics.mideast|talk.politics.misc|talk.religion.misc|
++-----+------------------------+-----------+-------------+-----------------------+------------------------+---------------------+--------------+------------+---------+---------------+------------------+----------------+---------+---------------+-------+---------+----------------------+------------------+---------------------+------------------+------------------+
+|0.0  |alt.atheism             |170        |2            |0                      |0                       |4                    |3             |4           |2        |8              |7                 |2               |7        |6              |5      |8        |61                    |11                |5                    |1                 |13                |
+|1.0  |comp.graphics           |1          |190          |29                     |19                      |15                   |26            |8           |3        |17             |10                |7               |5        |18             |10     |13       |5                     |8                 |4                    |1                 |0                 |
+|2.0  |comp.os.ms-windows.misc |0          |12           |281                    |28                      |9                    |15            |10          |6        |3              |3                 |0               |2        |12             |3      |6        |0                     |1                 |2                    |0                 |1                 |
+|3.0  |comp.sys.ibm.pc.hardware|1          |24           |47                     |211                     |14                   |9             |17          |13       |1              |12                |6               |5        |19             |0      |9        |2                     |0                 |1                    |1                 |0                 |
+|4.0  |comp.sys.mac.hardware   |1          |11           |14                     |25                      |222                  |18            |18          |7        |12             |15                |3               |3        |20             |4      |6        |2                     |3                 |0                    |1                 |0                 |
+|5.0  |comp.windows.x          |0          |25           |71                     |11                      |14                   |214           |4           |7        |6              |3                 |4               |2        |9              |1      |12       |2                     |3                 |3                    |4                 |0                 |
+|6.0  |misc.forsale            |1          |7            |7                      |14                      |11                   |6             |312         |4        |4              |3                 |1               |1        |9              |2      |6        |0                     |1                 |1                    |0                 |0                 |
+|7.0  |rec.autos               |2          |10           |2                      |4                       |5                    |3             |16          |251      |16             |13                |14              |2        |22             |6      |7        |0                     |18                |1                    |2                 |2                 |
+|8.0  |rec.motorcycles         |1          |2            |0                      |3                       |5                    |1             |7           |13       |332            |6                 |4               |1        |8              |5      |5        |1                     |2                 |1                    |1                 |0                 |
+|9.0  |rec.sport.baseball      |2          |8            |1                      |1                       |7                    |6             |12          |9        |8              |281               |28              |10       |12             |2      |2        |4                     |1                 |1                    |1                 |1                 |
+|10.0 |rec.sport.hockey        |0          |2            |1                      |2                       |6                    |2             |14          |0        |7              |23                |323             |2        |4              |2      |4        |2                     |3                 |2                    |0                 |0                 |
+|11.0 |sci.crypt               |1          |2            |1                      |3                       |2                    |1             |4           |5        |2              |7                 |2               |330      |10             |4      |6        |3                     |7                 |0                    |5                 |1                 |
+|12.0 |sci.electronics         |3          |26           |13                     |28                      |23                   |15            |9           |26       |19             |21                |12              |24       |125            |11     |16       |4                     |10                |3                    |5                 |0                 |
+|13.0 |sci.med                 |13         |9            |2                      |6                       |14                   |15            |19          |3        |39             |20                |7               |5        |57             |146    |12       |18                    |5                 |2                    |4                 |0                 |
+|14.0 |sci.space               |0          |3            |2                      |1                       |1                    |8             |10          |2        |2              |6                 |9               |5        |13             |8      |308      |1                     |9                 |2                    |4                 |0                 |
+|15.0 |soc.religion.christian  |3          |2            |1                      |1                       |2                    |4             |5           |0        |2              |5                 |1               |0        |9              |1      |3        |348                   |1                 |4                    |1                 |5                 |
+|16.0 |talk.politics.guns      |0          |4            |4                      |1                       |2                    |3             |13          |3        |6              |6                 |12              |17       |7              |3      |5        |2                     |266               |3                    |7                 |0                 |
+|17.0 |talk.politics.mideast   |15         |6            |1                      |0                       |3                    |4             |1           |2        |2              |11                |8               |7        |13             |4      |2        |14                    |13                |263                  |5                 |2                 |
+|18.0 |talk.politics.misc      |2          |4            |4                      |1                       |5                    |1             |6           |9        |4              |6                 |10              |9        |10             |5      |8        |9                     |77                |7                    |133               |0                 |
+|19.0 |talk.religion.misc      |25         |3            |2                      |3                       |1                    |0             |4           |6        |3              |8                 |2               |6        |6              |11     |8        |64                    |17                |5                    |2                 |75                |
++-----+------------------------+-----------+-------------+-----------------------+------------------------+---------------------+--------------+------------+---------+---------------+------------------+----------------+---------+---------------+-------+---------+----------------------+------------------+---------------------+------------------+------------------+
+
++-----+------------------------+---------+------+------+
+|label|category                |precision|recall|f1    |
++-----+------------------------+---------+------+------+
+|0.0  |alt.atheism             |0.7054   |0.5329|0.6071|
+|1.0  |comp.graphics           |0.5398   |0.4884|0.5128|
+|2.0  |comp.os.ms-windows.misc |0.5818   |0.7132|0.6408|
+|3.0  |comp.sys.ibm.pc.hardware|0.5829   |0.5383|0.5597|
+|4.0  |comp.sys.mac.hardware   |0.6082   |0.5766|0.592 |
+|5.0  |comp.windows.x          |0.6045   |0.5418|0.5714|
+|6.0  |misc.forsale            |0.6329   |0.8   |0.7067|
+|7.0  |rec.autos               |0.6765   |0.6338|0.6545|
+|8.0  |rec.motorcycles         |0.6734   |0.8342|0.7452|
+|9.0  |rec.sport.baseball      |0.603    |0.7078|0.6512|
+|10.0 |rec.sport.hockey        |0.7099   |0.8095|0.7564|
+|11.0 |sci.crypt               |0.7449   |0.8333|0.7867|
+|12.0 |sci.electronics         |0.3213   |0.3181|0.3197|
+|13.0 |sci.med                 |0.6266   |0.3687|0.4642|
+|14.0 |sci.space               |0.6906   |0.7817|0.7333|
+|15.0 |soc.religion.christian  |0.6421   |0.8744|0.7404|
+|16.0 |talk.politics.guns      |0.5833   |0.7308|0.6488|
+|17.0 |talk.politics.mideast   |0.8484   |0.6995|0.7668|
+|18.0 |talk.politics.misc      |0.7472   |0.429 |0.5451|
+|19.0 |talk.religion.misc      |0.75     |0.2988|0.4274|
++-----+------------------------+---------+------+------+
+
+macro F1: 0.6215
